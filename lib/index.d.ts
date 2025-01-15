@@ -1,0 +1,41 @@
+/// <reference types="node" />
+import { EmberClient } from './client/ember-client';
+import { EmberServer, EmberServerEvent } from './server/ember-server';
+import { EmberClientEvent } from './client/ember-client.events';
+import { LoggingService } from './logging/logging.service';
+declare const _default: {
+    EmberLib: {
+        decodeBuffer: (packet: Buffer) => import("./common/command").Command | import("./common/invocation-result").InvocationResult | import("./common/tree-node").TreeNode;
+        TreeNode: typeof import("./common/tree-node").TreeNode;
+        Element: typeof import("./common/element").Element;
+        Node: typeof import("./common/node").Node;
+        Parameter: typeof import("./common/parameter").Parameter;
+        ParameterType: typeof import("./common/parameter-type").ParameterType;
+        ParameterAccess: typeof import("./common/parameter-access").ParameterAccess;
+        Function: typeof import("./common/function/function").Function;
+        FunctionArgument: typeof import("./common/function/function-argument").FunctionArgument;
+        MatrixNode: typeof import("./common/matrix/matrix-node").MatrixNode;
+        Invocation: typeof import("./common/invocation").Invocation;
+        InvocationResult: typeof import("./common/invocation-result").InvocationResult;
+        StreamCollection: typeof import("./common/stream/stream-collection").StreamCollection;
+        Template: typeof import("./common/template").Template;
+        Command: typeof import("./common/command").Command;
+        QualifiedFunction: typeof import("./common/function/qualified-function").QualifiedFunction;
+        QualifiedMatrix: typeof import("./common/matrix/qualified-matrix").QualifiedMatrix;
+        QualifiedNode: typeof import("./common/qualified-node").QualifiedNode;
+        QualifiedParameter: typeof import("./common/qualified-parameter").QualifiedParameter;
+        QualifiedTemplate: typeof import("./common/qualified-template").QualifiedTemplate;
+        Label: typeof import("./common/label").Label;
+        StreamDescription: typeof import("./common/stream/stream-description").StreamDescription;
+        StreamEntry: typeof import("./common/stream/stream-entry").StreamEntry;
+        StreamFormat: typeof import("./common/stream/stream-format").StreamFormat;
+        StringIntegerPair: typeof import("./common/string-integer-pair").StringIntegerPair;
+        StringIntegerCollection: typeof import("./common/string-integer-collection").StringIntegerCollection;
+    };
+    EmberClient: typeof EmberClient;
+    EmberClientEvent: typeof EmberClientEvent;
+    EmberServer: typeof EmberServer;
+    EmberServerEvent: typeof EmberServerEvent;
+    LoggingService: typeof LoggingService;
+};
+export = _default;

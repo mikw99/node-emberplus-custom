@@ -1,0 +1,91 @@
+import { ExtendedReader as Reader, ExtendedWriter as Writer } from '../../ber';
+import { MatrixMode } from './matrix-mode';
+import { MatrixOperation } from './matrix-operation';
+import { MatrixType } from './matrix-type';
+import { MatrixContents } from './matrix-contents';
+import { MatrixConnection, JMatrixConnection } from './matrix-connection';
+import { TreeNode } from '../tree-node';
+import { Parameter } from '../parameter';
+import { Label, LabelInterface } from '../label';
+export interface MatrixConnections {
+    [index: number]: MatrixConnection;
+}
+export interface JMatrix {
+    number: number;
+    path: string;
+    type: string;
+    mode: string;
+    targets?: number[];
+    sources?: number[];
+    connections?: {
+        [index: number]: JMatrixConnection;
+    };
+    identifier?: string;
+    description?: string;
+    targetCount?: number;
+    sourceCount?: number;
+    maximumTotalConnects?: number;
+    maximumConnectsPerTarget?: number;
+    parametersLocation?: number | string;
+    gainParameterNumber?: number;
+    labels?: LabelInterface[];
+    schemaIdentifiers?: string;
+    templateReference?: string;
+}
+export declare class Matrix extends TreeNode {
+    get contents(): MatrixContents;
+    get type(): MatrixType;
+    set type(type: MatrixType);
+    get mode(): MatrixMode;
+    set mode(mode: MatrixMode);
+    get targetCount(): number | null;
+    set targetCount(targetCount: number);
+    get sourceCount(): number | null;
+    set sourceCount(sourceCount: number);
+    get maximumTotalConnects(): number | null;
+    set maximumTotalConnects(maximumTotalConnects: number);
+    get maximumConnectsPerTarget(): number | null;
+    set maximumConnectsPerTarget(maximumConnectsPerTarget: number);
+    get parametersLocation(): string | number | null;
+    set parametersLocation(parametersLocation: number | string);
+    get gainParameterNumber(): number | null;
+    set gainParameterNumber(gainParameterNumber: number);
+    get labels(): Label[] | null;
+    set labels(labels: Label[]);
+    get schemaIdentifiers(): string | null;
+    set schemaIdentifiers(schemaIdentifiers: string);
+    get templateReference(): string | null;
+    set templateReference(templateReference: string);
+    _connectedSources: {
+        [index: number]: Set<number>;
+    };
+    _numConnections: number;
+    targets?: number[];
+    sources?: number[];
+    connections?: MatrixConnections;
+    defaultSources?: Parameter[];
+    constructor(identifier?: string, _type?: MatrixType, _mode?: MatrixMode);
+    static canConnect(matrixNode: Matrix, targetID: number, sources: number[], operation?: MatrixOperation): boolean;
+    static connectSources(matrix: Matrix, targetID: number, sources: number[]): void;
+    static decodeTargets(ber: Reader): number[];
+    static decodeSources(ber: Reader): number[];
+    static decodeConnections(ber: Reader): MatrixConnections;
+    static disconnectSources(matrix: Matrix, targetID: number, sources: number[]): void;
+    static getSourceConnections(matrix: Matrix, source: number): number[];
+    static matrixUpdate(matrix: Matrix, newMatrix: Matrix): boolean;
+    static setSources(matrix: Matrix, targetID: number, sources: number[]): void;
+    static validateConnection(matrixNode: Matrix, targetID: number, sources?: number[]): void;
+    isMatrix(): boolean;
+    canConnect(targetID: number, sources: number[], operation: MatrixOperation): boolean;
+    connect(connections: MatrixConnections): TreeNode;
+    connectSources(targetID: number, sources: number[]): void;
+    disconnectSources(targetID: number, sources: number[]): void;
+    encodeConnections(ber: Writer): void;
+    encodeSources(ber: Writer): void;
+    encodeTargets(ber: Writer): void;
+    getSourceConnections(source: number): number[];
+    setSources(targetID: number, sources: number[]): void;
+    toJSON(): JMatrix;
+    update(other: Matrix): boolean;
+    validateConnection(targetID: number, sources: number[]): void;
+}

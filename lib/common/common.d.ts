@@ -1,0 +1,71 @@
+/// <reference types="node" />
+import { ExtendedReader } from '../ber';
+import { TreeNode } from './tree-node';
+import { Element } from './element';
+import { Command } from './command';
+import { InvocationResult } from './invocation-result';
+import { StreamCollection } from './stream/stream-collection';
+import { Parameter } from './parameter';
+import { ParameterType } from './parameter-type';
+import { ParameterAccess } from './parameter-access';
+import { Node } from './node';
+import { MatrixNode } from './matrix/matrix-node';
+import { Template } from './template';
+import { QualifiedMatrix } from './matrix/qualified-matrix';
+import { QualifiedParameter } from './qualified-parameter';
+import { QualifiedNode } from './qualified-node';
+import { QualifiedFunction } from './function/qualified-function';
+import { QualifiedTemplate } from './qualified-template';
+import { Function } from './function/function';
+import { FunctionArgument } from './function/function-argument';
+import { Label } from './label';
+import { StringIntegerCollection } from './string-integer-collection';
+import { StringIntegerPair } from './string-integer-pair';
+import { Invocation } from './invocation';
+import { StreamDescription } from './stream/stream-description';
+import { StreamEntry } from './stream/stream-entry';
+import { StreamFormat } from './stream/stream-format';
+export declare const rootDecode: (ber: ExtendedReader) => Command | InvocationResult | TreeNode;
+export declare const createTreeBranch: (root: TreeNode, path: string) => TreeNode;
+export declare const jsonFullNodeLogger: (node: TreeNode, logger: {
+    log: (x: string) => Promise<void>;
+}, spaces?: string, stepSpaces?: string) => Promise<void>;
+export declare const jsonNodeLogger: (node: TreeNode, logger: {
+    log: (x: string) => Promise<void>;
+}, spaces?: string, stepSpaces?: string) => Promise<void>;
+export declare const jsonTreeLogger: (node: TreeNode, logger: {
+    log: (x: string) => Promise<void>;
+}, spaces?: string, stepSpaces?: string) => Promise<void>;
+export declare const nodeLogger: (node: TreeNode, logger: {
+    log: (x: string) => Promise<void>;
+}, spaces?: string, stepSpaces?: string) => Promise<void>;
+export declare const childDecode: (ber: ExtendedReader) => Command | TreeNode;
+export declare const decodeBuffer: (packet: Buffer) => Command | InvocationResult | TreeNode;
+export declare const EmberLib: {
+    decodeBuffer: (packet: Buffer) => Command | InvocationResult | TreeNode;
+    TreeNode: typeof TreeNode;
+    Element: typeof Element;
+    Node: typeof Node;
+    Parameter: typeof Parameter;
+    ParameterType: typeof ParameterType;
+    ParameterAccess: typeof ParameterAccess;
+    Function: typeof Function;
+    FunctionArgument: typeof FunctionArgument;
+    MatrixNode: typeof MatrixNode;
+    Invocation: typeof Invocation;
+    InvocationResult: typeof InvocationResult;
+    StreamCollection: typeof StreamCollection;
+    Template: typeof Template;
+    Command: typeof Command;
+    QualifiedFunction: typeof QualifiedFunction;
+    QualifiedMatrix: typeof QualifiedMatrix;
+    QualifiedNode: typeof QualifiedNode;
+    QualifiedParameter: typeof QualifiedParameter;
+    QualifiedTemplate: typeof QualifiedTemplate;
+    Label: typeof Label;
+    StreamDescription: typeof StreamDescription;
+    StreamEntry: typeof StreamEntry;
+    StreamFormat: typeof StreamFormat;
+    StringIntegerPair: typeof StringIntegerPair;
+    StringIntegerCollection: typeof StringIntegerCollection;
+};
