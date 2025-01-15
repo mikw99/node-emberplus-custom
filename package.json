@@ -9,7 +9,7 @@
         "compile:watch": "tsc -w -p .",
         "tslint": "tslint --project tslint.json --fix",
         "tslint:nofix": "tslint --project tslint.json",
-        "test": "jest  --forceExit  --detectOpenHandles",
+        "test": "jest  --forceExit  --detectOpenHandles --passWithNoTests",
         "test:badges": "npm run jest-coverage-badges output ./badges",
         "test:coverage": "jest --coverage --forceExit --detectOpenHandles && npm run test:badges",
         "build": "npm run compile && npm run tslint:nofix && npm run test:coverage",
