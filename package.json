@@ -1,5 +1,5 @@
 {
-    "name": "node-emberplus-custom",
+    "name": "@mikw99/node-emberplus-custom",
     "version": "1.0.0",
     "description": "Custom version of dufourgilles/node-emberplus",
     "main": "lib/index.js",
