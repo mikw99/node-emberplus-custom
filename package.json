@@ -1,13 +1,13 @@
 {
     "name": "@mikw99/node-emberplus-custom",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Custom version of dufourgilles/node-emberplus",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "scripts": {
         "compile": "rimraf lib && tsc -p .",
         "compile:watch": "tsc -w -p .",
-        "build": "npm run compile && npm run tslint:nofix && npm run test:coverage"
+        "build": "npm run compile && npm run test:coverage"
     },
     "author": "",
     "files": ["lib"],
